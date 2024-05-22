@@ -1,14 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Home = () => {
+    useEffect(() => {
+        axios
+            .get(`https://reqres.in/api/users/${1}`)
+            .then((res) => {
+                setUserInfo(res.data.data);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }, []);
+
     return (
-        <> 
-            코드를 추가해주세요
+        <>
+            <Card></Card>
         </>
     );
 };
 
 export default Home;
-
